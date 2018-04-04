@@ -1,0 +1,11 @@
+#!/bin/bash
+for service in $(cat /home/suraj/service.txt)
+do
+echo $service
+done
+if (( $(ps -ef | grep -v grep | grep $service | wc -l) > 0 ))
+then
+echo "$service is running!!!"
+else
+/etc/init.d/$service start
+fi
