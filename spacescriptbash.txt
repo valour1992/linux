@@ -1,0 +1,11 @@
+#!/bin/bash
+#start editing
+partition="/dev/mapper/rhel-root"
+threshold="50"
+#stop editing
+
+percent=$(df -h | grep "$partition" | awk '{ print $5 }' | sed 's/%//g')
+if ((percent > threshold))
+then
+echo "$partition at $(hostname -f) is nearly full"
+fi
