@@ -1,0 +1,8 @@
+LIST="10.164.76.86"
+FILE="/home/check.sh"
+
+for NODE in $servers.txt
+do
+#echo xfer $FILE to $NODE
+scp -p $FILE $NODE:$FILE
+done
