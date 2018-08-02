@@ -1,0 +1,7 @@
+for IP in /home/server.txt;do
+ssh root@IP 'bash -s' << EOF
+  pwd
+  hostname
+  df -TH
+EOF
+done
