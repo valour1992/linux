@@ -1,0 +1,11 @@
+#!/bin/bash
+#servers IP in Home
+for NODE in `cat /home/servers.txt`
+do
+#Checking if file exist or not
+if ssh root@$NODE '[ -e /etc/resolv.conf ]';then
+echo "File exist in $NODE"
+else
+echo "File not exist in $NODE"
+fi
+done
