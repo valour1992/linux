@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Parent backup directory
+backup_parent_dir="/home/RHEL7/bash"
+
+# Directories to backup
+backup_me="/etc/yum.repos.d"
+
+# Check and create backup directory
+backup_date=`date +%Y%m%d`
+backup_dir=${backup_parent_dir}/YUMBACKUP${backup_date}
+mkdir -p $backup_dir
+
+# Perform backup
+for directory in $backup_me
+do
+        tar pcfzP ${backup_dir}/Log.tgz ${directory} 
+done
