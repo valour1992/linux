@@ -1,0 +1,7 @@
+#!/bin/bash
+#@valour1992
+#For converting multiple file with .txt extension to some other extension
+#Path of directory
+file="/home/test/"
+#for loop for renaming the file one by one
+for i in *.txt; do mv "$i" "`basename $i .txt`.JPG"; done
