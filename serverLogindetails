@@ -1,0 +1,22 @@
+#!/bin/bash
+# function to display a line of star
+function line(){
+ echo "*************************************************"
+}
+ 
+echo "Your username : $(echo $USER)"
+line # call function
+ 
+echo "Current date and time : $(date)"
+line
+echo "Currently logged on users:"
+who > /home/login.txt
+line
+echo "Failed login" 
+#Total Count
+grep Failed /var/log/secure* | wc -l
+#Failed User
+cat /var/log/secure | grep "failed" | awk '{print $11}' >/home/failed.txt
+line
+mail -s 'Login users' srjsingh7767@gmail.com  < /home/login.txt
+mail -s 'Failed Logins' srjsingh7767@gmail.com < /home/failed.txt
