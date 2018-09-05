@@ -1,0 +1,12 @@
+#!/bin/bash
+SITES=` cat  /home/sites.txt`
+echo $SITES
+for site in $SITES;do
+CURL=$(curl -s --head $site)
+if echo $CURL | grep "200 OK" > /dev/null
+        then
+            echo "The HTTP server on $site is up!"
+        else
+            echo "Site is not running!"
+fi
+done
