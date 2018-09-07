@@ -1,0 +1,11 @@
+#!/bin/bash
+for ip in $(</home/IP.txt);do
+#echo $ip
+#ping -c1 -w1 $ip > /dev/null
+#ping -c1 -w1  $ip | grep "ttl" | awk '{print $6}' >> /home/ttl.txt
+ping -c1 -w1  $ip  | grep "ttl" | awk '{print $4 , $6}' >> /home/TTL.txt
+if [ "$?" -eq "0" ]; then
+   echo "$ip" >> /home/up.txt
+   else
+   echo "$ip" >> /home/down.txt
+fi
