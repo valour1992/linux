@@ -1,0 +1,13 @@
+#!/bin/bash
+#checking entry of mount in fstab if found good else automatically mount
+FILE=$(cat /etc/fstab)
+# Separate the file content
+OUT_ALIGNED=$(echo "$FILE" |sed 's/^\s*#.*//')
+echo " $OUT_ALIGNED" | grep "/dev/mapper/centos-root"
+ if [ $? -eq 0 ]; then
+        echo  "TRUE"
+    else
+#you can add the entry of your mount point
+        #echo "/dev/sdb1 /media/valour ext4 defaults 0 2" >> /etc/fstab
+echo"FALSE"
+ fi
