@@ -1,0 +1,14 @@
+#!/bin/bash
+SUCESS=0
+for i in $( cat /home/Bash/users.txt ); do
+grep -q "$i" /etc/passwd
+if [ $? -eq $SUCESS ];then
+echo "user already exists"
+else
+echo "Bash scripting"
+    useradd $i
+    echo "user $i added successfully!"
+    echo $i:$i"Welcome@123" | chpasswd
+    echo "Password for user $i changed successfully"
+fi
+done
