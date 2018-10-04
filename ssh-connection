@@ -1,0 +1,5 @@
+#!/bin/bash
+for IP_ADDRESS in `cat /home/Patches/servers.txt` ; do
+    ssh-keyscan $IP_ADDRESS 2>&1 | grep -v "^$" > /dev/null
+    [ $? == 0 ] && echo $IP_ADDRESS
+  done 
