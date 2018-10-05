@@ -1,0 +1,7 @@
+#!/bin/bash
+#first getting user UID greater than 1000 and saving them in test file
+#getent passwd | awk -F: '$3 > 1000 {print $1}' > userpresnt.txt
+for users in $(cat /home/Bash/userpresnt.txt ); do
+#using lastlog commands for checking last login by user within days as per your requirement
+lastlog -u$users -b 20 | tail -n+2 | awk '{print $1}' 
+done
